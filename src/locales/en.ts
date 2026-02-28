@@ -1,5 +1,6 @@
 export const en = {
     common: {
+        logo: "DevStudio",
         nav: {
             services: "Services",
             portfolio: "Portfolio",
@@ -341,12 +342,9 @@ export const en = {
         subtitle: "",
         view_project: "View Project",
         projects: [
-            { title: "E-Commerce Platform", category: "E-Commerce" },
-            { title: "SaaS Dashboard", category: "Web App" },
-            { title: "Corporate Landing", category: "Web Design" },
-            { title: "Analytical Platform", category: "Web App" },
-            { title: "Branded Site", category: "Web Design" },
-            { title: "Booking System", category: "E-Commerce" },
+            { title: "Visa Center", category: "Corporate Site", link: "https://visa-centr.vercel.app/" },
+            { title: "Art Land", category: "Web Design", link: "https://art-land.vercel.app/" },
+            { title: "Resurs Trans", category: "Logistics Company", link: "https://resurs-trans-25s.vercel.app/" },
         ]
     },
     testimonials: {
@@ -360,7 +358,7 @@ export const en = {
     },
     faq: {
         title: "Frequently Asked Questions",
-        subtitle: "Answering popular questions to help you make the right choice",
+        subtitle: "",
         items: [
             {
                 question: "Can I change the text myself?",
@@ -404,11 +402,11 @@ export const en = {
             },
             {
                 title: "3. Purposes of Processing Personal Data",
-                content: "The purpose of processing the User's personal data is:\n- Publishing the sports achievements of race participants.\n- Maintaining and displaying the public rating of the community.\n- Informing the User by sending emails."
+                content: "The purpose of processing the User's personal data is:\n- Providing consultations on web development and design services.\n- Conclusion and execution of contracts for website creation and IT services.\n- Informing the User by sending emails and messenger texts to discuss project details."
             },
             {
                 title: "4. List of Processed Data",
-                content: "The Operator processes the following personal data:\n- Surname, name, patronymic (if any);\n- Gender;\n- Age or year of birth;\n- Sports results (distance, time, pace)."
+                content: "The Operator processes the following personal data:\n- Surname, name, patronymic (if any);\n- Phone number;\n- Email address;\n- Information about the company or project necessary for providing services."
             },
             {
                 title: "5. Withdrawal of Consent",
@@ -422,15 +420,15 @@ export const en = {
         sections: [
             {
                 title: "1. Subject of the Agreement",
-                content: "This User Agreement is a legally binding document that governs the relationship between the WebStudio project and Internet users using the project's services."
+                content: "This User Agreement is a legally binding document that governs the relationship between the WebStudio project (Contractor) and site users (Clients) using the project's services to familiarize themselves with web development offerings."
             },
             {
                 title: "2. Rights and Obligations",
-                content: "The user undertakes to use the site only for lawful purposes. Copying, distributing or any other use of site materials without the prior consent of the copyright holder is prohibited."
+                content: "The user undertakes to use the site only for lawful purposes. The site's content (design, texts, portfolio code) is intellectual property. Copying, distributing or any other use of site materials without the prior consent of the copyright holder is prohibited."
             },
             {
                 title: "3. Limitation of Liability",
-                content: "The site is provided 'as is'. The WebStudio project is not responsible for any direct or indirect damage resulting from the use or inability to use the site and its services."
+                content: "The site is provided 'as is' for informational purposes. The WebStudio project is not responsible for any direct or indirect damage resulting from the use of the site. Relations regarding project development are regulated by a separate civil contract."
             }
         ]
     },

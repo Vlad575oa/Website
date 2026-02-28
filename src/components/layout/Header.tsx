@@ -13,7 +13,7 @@ export default function Header() {
                 <div className="flex items-center justify-center size-10 rounded-xl bg-gradient-to-br from-[#137fec] to-purple-600 text-white tile-neu transition-transform group-hover:scale-105">
                     <span className="material-symbols-outlined !text-[24px]">code</span>
                 </div>
-                <h2 className="text-slate-100 text-xl font-bold leading-tight tracking-tight">DevStudio</h2>
+                <h2 className="text-slate-100 text-xl font-bold leading-tight tracking-tight">{t.common.logo}</h2>
             </Link>
 
             <nav className="hidden md:flex items-center gap-6">

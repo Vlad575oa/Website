@@ -27,7 +27,7 @@ export default function Solution({ t }: SolutionProps) {
 
     return (
         <section className="py-20 bg-transparent relative z-10" id="services">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div className="relative">
                         <div className="absolute -top-10 -left-10 w-40 h-40 bg-[#137fec]/10 rounded-full blur-3xl"></div>

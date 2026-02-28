@@ -14,13 +14,13 @@ export default function Footer() {
                 {/* Top Section */}
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex flex-col items-center md:items-start gap-1">
-                        <p className="text-slate-500 text-sm">
-                            {t.footer.copyright}
-                        </p>
                         <p className="text-slate-400 text-sm font-medium">{t.footer.inn}</p>
                         <a href="mailto:vlad575@mail.ru" className="text-slate-400 text-sm hover:text-[#137fec] transition-colors">
                             vlad575@mail.ru
                         </a>
+                        <p className="text-slate-500 text-xs mt-1">
+                            {t.footer.copyright}
+                        </p>
                     </div>
 
                     <div className="flex flex-col items-center gap-2">

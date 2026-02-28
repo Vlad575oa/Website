@@ -22,7 +22,7 @@ export default function FAQ({ t }: FAQProps) {
     };
 
     return (
-        <section className="py-20 bg-transparent relative z-10 overflow-hidden" id="faq">
+        <section className="pt-10 pb-20 bg-transparent relative z-10 overflow-hidden" id="faq">
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <SparklesCore
                     id="sparkles-faq"
@@ -38,7 +38,7 @@ export default function FAQ({ t }: FAQProps) {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold mb-4 text-white">{t.title}</h2>
-                    <p className="text-slate-400">{t.subtitle}</p>
+                    {t.subtitle && <p className="text-slate-400">{t.subtitle}</p>}
                 </div>
                 <div className="space-y-4">
                     {t.items.map((faq, i) => {

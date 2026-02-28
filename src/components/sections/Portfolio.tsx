@@ -9,18 +9,16 @@ interface PortfolioProps {
         projects: Array<{
             title: string;
             category: string;
+            link?: string;
         }>;
     };
 }
 
 export default function Portfolio({ t }: PortfolioProps) {
     const images = [
-        "/portfolio-3.webp",
-        "/portfolio-2.webp",
-        "/portfolio-3.webp",
-        "/portfolio-2.webp",
-        "/portfolio-3.webp",
-        "/portfolio-2.webp",
+        "/1_Visa.png",
+        "/Landscape.png",
+        "/Transresource.png",
     ];
 
     const projects = t.projects.map((p, i) => ({
@@ -42,7 +40,7 @@ export default function Portfolio({ t }: PortfolioProps) {
                 />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 md:px-8 relative z-10">
                 <div className="text-center max-w-3xl mx-auto mb-16">
                     <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
                         {t.title}
@@ -54,9 +52,12 @@ export default function Portfolio({ t }: PortfolioProps) {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, idx) => (
-                        <article
+                        <a
+                            href={project.link || "#"}
+                            target={project.link ? "_blank" : undefined}
+                            rel={project.link ? "noopener noreferrer" : undefined}
                             key={idx}
-                            className="group relative rounded-2xl overflow-hidden border border-slate-700/50 bg-[#1a1f26]/60 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#137fec]/20 hover:border-[#137fec]/50"
+                            className="group block relative rounded-2xl overflow-hidden border border-slate-700/50 bg-[#1a1f26]/60 backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-[#137fec]/20 hover:border-[#137fec]/50 cursor-pointer"
                         >
                             <div className="aspect-[4/3] relative overflow-hidden">
                                 <Image
@@ -82,7 +83,7 @@ export default function Portfolio({ t }: PortfolioProps) {
                                     {project.title}
                                 </h3>
                             </div>
-                        </article>
+                        </a>
                     ))}
                 </div>
             </div>

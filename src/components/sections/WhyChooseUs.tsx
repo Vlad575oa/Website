@@ -20,7 +20,7 @@ const advantages = [
 export default function WhyChooseUs() {
     return (
         <section className="py-24 bg-slate-900 text-white">
-            <div className="container mx-auto px-4">
+            <div className="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-4 md:px-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     <div>
                         <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">Built for scale, speed, and ranking.</h2>

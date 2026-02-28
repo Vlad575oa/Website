@@ -18,7 +18,7 @@ interface PricingProps {
 
 export default function Pricing({ t }: PricingProps) {
     return (
-        <section className="py-24 px-6 sm:px-10 bg-transparent relative z-10 overflow-hidden" id="pricing">
+        <section className="pt-12 pb-24 px-6 sm:px-10 bg-transparent relative z-10 overflow-hidden" id="pricing">
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <SparklesCore
                     id="sparkles-pricing"

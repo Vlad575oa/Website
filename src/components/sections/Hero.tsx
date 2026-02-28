@@ -59,7 +59,7 @@ export default function Hero({ t }: HeroProps) {
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 w-full">
+            <div className="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 md:px-8 relative z-10">
                 <style>{`
                     @keyframes cinematicReveal {
                         0% { opacity: 0; transform: translateY(20px); filter: blur(10px); }
@@ -112,7 +112,7 @@ export default function Hero({ t }: HeroProps) {
                             </p>
                         </div>
 
-                        <button className="group flex items-center justify-center gap-2 h-14 px-6 mt-4 rounded-xl bg-[#137fec] hover:bg-blue-500 text-white text-base font-bold shadow-lg shadow-[#137fec]/20 transition-all duration-300 hover:shadow-2xl hover:shadow-[#137fec]/40 hover:-translate-y-1 w-full max-w-[480px] opacity-0 animate-[cinematicReveal_1.5s_ease-out_1.2s_forwards]">
+                        <button className="group flex items-center justify-center gap-2 h-14 px-6 mt-4 rounded-2xl bg-slate-800/80 backdrop-blur-md text-[#137fec] hover:text-white border border-slate-700/50 text-base font-bold shadow-[6px_6px_14px_rgba(0,0,0,0.6),-6px_-6px_14px_rgba(255,255,255,0.05)] transition-all duration-300 hover:shadow-[inset_6px_6px_14px_rgba(0,0,0,0.6),inset_-6px_-6px_14px_rgba(255,255,255,0.05)] hover:bg-[#137fec]/20 hover:-translate-y-0.5 active:translate-y-1 active:shadow-[inset_8px_8px_16px_rgba(0,0,0,0.8),inset_-2px_-2px_8px_rgba(255,255,255,0.02)] w-full max-w-[480px] opacity-0 animate-[cinematicReveal_1.5s_ease-out_1.2s_forwards]">
                             <span>{t.cta_button}</span>
                             <span className="material-symbols-outlined text-sm font-bold transition-transform duration-300 group-hover:translate-x-1">arrow_forward</span>
                         </button>
