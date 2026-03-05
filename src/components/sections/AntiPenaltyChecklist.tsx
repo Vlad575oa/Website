@@ -41,7 +41,7 @@ export default function AntiPenaltyChecklist() {
 
     return (
         <section id="check-list" className="pt-8 pb-20 bg-transparent relative z-10">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-6 relative z-10">
                 <div className="grid lg:grid-cols-12 gap-12">
                     {/* Left Column: Checklist */}
                     <div className="lg:col-span-8">

@@ -1,6 +1,6 @@
 export const en = {
     common: {
-        logo: "DevStudio",
+        logo: "DevVlad",
         nav: {
             services: "Services",
             portfolio: "Portfolio",
@@ -14,7 +14,7 @@ export const en = {
     footer: {
         copyright: "© 2026, Self-employed Oleynik Vladislav Alexandrovich",
         inn: "INN: 771402421981",
-        all_rights_reserved: "All rights reserved. site developed by",
+        all_rights_reserved: "All rights reserved. site developed by ",
         privacy_policy: "Privacy Policy",
         terms_of_use: "Terms of Use",
         cookie_settings: "Cookie Settings",
@@ -76,7 +76,7 @@ export const en = {
             subtitle: "We build trust through transparency and quality delivery.",
             items: [
                 { title: "Fixed Price", desc: "The price we agree on is the final price. No unexpected extra charges or hidden fees later on." },
-                { title: "Safe Payment", desc: "Pay only after the project is delivered and you are 100% satisfied with the result." },
+                { title: "Milestone Payment", desc: "The work is divided into two stages: 50% after I show the intermediate result (50% completion), and 50% after the final project completion." },
                 { title: "Quality Guarantee", desc: "Pixel-perfect implementation, clean code structure, and high website loading scores." }
             ]
         },
@@ -88,8 +88,8 @@ export const en = {
     },
     legislation_page: {
         hero: {
-            title_prefix: "Compliance Analysis with",
-            title_accent: "Local Laws",
+            title: "Is your website compliant with Russian laws?",
+            description: "During development, I take into account the requirements of 152-FZ and other regulations related to the processing of personal data. This helps protect your business from potential fines and legal risks.",
             btn_check: "Start Check",
             btn_penalties: "Penalty Table",
         },
@@ -234,7 +234,7 @@ export const en = {
         stat_3_label: "Optimized",
     },
     expertise: {
-        title: "Why Choose Next.js?",
+        title: "Why I choose to develop on Next.js?",
         features: [
             {
                 title: "Search Engine Speed",
@@ -245,8 +245,8 @@ export const en = {
                 description: "Perfect display and UX on any device from the start. Responsiveness without compromise.",
             },
             {
-                title: "Scalability Without Limits",
-                description: "Modular architecture ready to grow with your business from startup to high-load enterprise.",
+                title: "Fully Custom Development",
+                description: "The site is built from scratch for your tasks. Any functionality and design. Can be modified and scaled.",
             },
             {
                 title: "Security and Reliability",
@@ -327,10 +327,10 @@ export const en = {
                 ]
             },
             {
-                name: "Premium", price: "$490", desc: "10 pages",
+                name: "Premium", price: "$700", desc: "10 pages",
                 features: [
                     "Complex Business Logic",
-                    "API Integration",
+                    "Database & Service Integration",
                     "User Accounts",
                     "Payment Processing",
                 ]
@@ -343,15 +343,15 @@ export const en = {
         view_project: "View Project",
         projects: [
             { title: "Visa Center", category: "Corporate Site", link: "https://visa-centr.vercel.app/" },
-            { title: "Art Land", category: "Web Design", link: "https://art-land.vercel.app/" },
-            { title: "Resurs Trans", category: "Logistics Company", link: "https://resurs-trans-25s.vercel.app/" },
+            { title: "Terra Art", category: "Web Design", link: "https://art-land.vercel.app/" },
+            { title: "ResursLogistics", category: "Logistics Company", link: "https://resurs-trans-25s.vercel.app/" },
         ]
     },
     testimonials: {
         title: "What Our Clients Say",
         subtitle: "Trusted by startups and enterprises to ship fast, beautiful, and scalable products.",
         items: [
-            { name: "James Carter", role: "CEO, TechNova", quote: "DevStudio built a lightning-fast site that increased our organic traffic by 180%. Their obsession with performance is unmatched.", initials: "JC" },
+            { name: "James Carter", role: "CEO, TechNova", quote: "DevVlad built a lightning-fast site that increased our organic traffic by 180%. Their obsession with performance is unmatched.", initials: "JC" },
             { name: "Maria Gonzalez", role: "Founder, ShopWave", quote: "From design to launch, the team worked incredibly professionally. Our online store loads in less than 2 seconds, and conversions prove it.", initials: "MG" },
             { name: "Alex Kim", role: "CTO, DataPulse", quote: "Clean code, perfect Lighthouse scores, and a beautiful UI. They truly understand what modern web development should be.", initials: "AK" },
         ]
@@ -370,8 +370,12 @@ export const en = {
             },
             {
                 question: "Are there any additional costs?",
-                answer: "Only for the domain (website name) and hosting (where the site lives). This usually costs about 300-1000 rubles per month. I'll help you register everything in your name so you own it completely."
+                answer: "You only pay for the domain (website address) — typically 300–1000 rubles per year, and hosting (the server where the site is located) — averaging 300–1000 rubles per month.\n\nI will help you register the domain and hosting in your name so that the site belongs entirely to you.\n\nIf you have an online store with a database, additional data storage might be required. The cost for such a solution is usually around 1000 rubles per month.\n\nAdditionally, 2–3 sites can be hosted on a single server, so several small online stores can cost approximately 1000–2000 rubles per month."
             },
+            {
+                question: "How does the payment process work?",
+                answer: "The payment process is fully transparent: you pay the first 50% only after I show you the intermediate result (when 50% of the work is complete). The remaining 50% is paid after full project completion and final testing. You always pay for tangible results shown."
+            }
         ]
     },
     cta: {
@@ -382,8 +386,8 @@ export const en = {
         external_link: {
             title_tg: "Open Telegram",
             title_wa: "Open WhatsApp",
-            description_tg: "You are leaving DevStudio and opening an external application. Please note that your phone number and profile data will become available to the messenger platform.",
-            description_wa: "You are leaving DevStudio and opening the WhatsApp application. Please note that your phone number and profile data will become available to the messenger platform.",
+            description_tg: "You are being redirected from DevVlad to Telegram to continue the conversation.\n\nPlease note that when using Telegram, the terms and privacy policy of that service apply.",
+            description_wa: "You are being redirected from DevVlad to WhatsApp to continue the conversation.\n\nPlease note that when using WhatsApp, the terms and privacy policy of that service apply.",
             confirm: "Open",
             cancel: "Cancel",
         }
@@ -394,11 +398,11 @@ export const en = {
         sections: [
             {
                 title: "1. General Provisions",
-                content: "This personal data processing policy has been compiled in accordance with the requirements of the Federal Law of July 27, 2006. No. 152-FZ 'On Personal Data' and determines the procedure for processing personal data and measures to ensure the security of personal data taken by the WebStudio project (hereinafter referred to as the Operator)."
+                content: "This personal data processing policy has been compiled in accordance with the requirements of the Federal Law of July 27, 2006. No. 152-FZ 'On Personal Data' and determines the procedure for processing personal data and measures to ensure the security of personal data taken by the DevVlad project (hereinafter referred to as the Operator)."
             },
             {
                 title: "2. Basic Concepts",
-                content: "Personal data — any information relating directly or indirectly to an identified or identifiable natural person (subject of personal data).\nOperator — Organizer of the WebStudio project, independently or jointly with other persons organizing and (or) processing personal data.\nProcessing of personal data — any action (operation) or set of actions (operations) with personal data."
+                content: "Personal data — any information relating directly or indirectly to an identified or identifiable natural person (subject of personal data).\nOperator — Organizer of the DevVlad project, independently or jointly with other persons organizing and (or) processing personal data.\nProcessing of personal data — any action (operation) or set of actions (operations) with personal data."
             },
             {
                 title: "3. Purposes of Processing Personal Data",
@@ -420,7 +424,7 @@ export const en = {
         sections: [
             {
                 title: "1. Subject of the Agreement",
-                content: "This User Agreement is a legally binding document that governs the relationship between the WebStudio project (Contractor) and site users (Clients) using the project's services to familiarize themselves with web development offerings."
+                content: "This User Agreement is a legally binding document that governs the relationship between the DevVlad project (Contractor) and site users (Clients) using the project's services to familiarize themselves with web development offerings."
             },
             {
                 title: "2. Rights and Obligations",
@@ -428,7 +432,7 @@ export const en = {
             },
             {
                 title: "3. Limitation of Liability",
-                content: "The site is provided 'as is' for informational purposes. The WebStudio project is not responsible for any direct or indirect damage resulting from the use of the site. Relations regarding project development are regulated by a separate civil contract."
+                content: "The site is provided 'as is' for informational purposes. The DevVlad project is not responsible for any direct or indirect damage resulting from the use of the site. Relations regarding project development are regulated by a separate civil contract."
             }
         ]
     },
@@ -438,7 +442,7 @@ export const en = {
         sections: [
             {
                 title: "1. Use of Cookies",
-                content: "Our WebStudio website uses cookies to ensure its operation, improve the user experience and collect analytics. By continuing to use the site, you agree to the use of cookies."
+                content: "Our DevVlad website uses cookies to ensure its operation, improve the user experience and collect analytics. By continuing to use the site, you agree to the use of cookies."
             },
             {
                 title: "2. What are Cookies?",

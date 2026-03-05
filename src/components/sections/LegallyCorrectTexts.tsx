@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/lib/i18n";
 
 export default function LegallyCorrectTexts() {
@@ -11,8 +11,13 @@ export default function LegallyCorrectTexts() {
     const copyToClipboard = (id: string, text: string) => {
         navigator.clipboard.writeText(text);
         setCopiedId(id);
-        setTimeout(() => setCopiedId(null), 2000);
     };
+
+    useEffect(() => {
+        if (!copiedId) return;
+        const timer = setTimeout(() => setCopiedId(null), 2000);
+        return () => clearTimeout(timer);
+    }, [copiedId]);
 
     return (
         <section className="pt-10 pb-10 bg-transparent relative z-10">

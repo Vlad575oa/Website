@@ -6,7 +6,7 @@ import ExternalWALink from "../common/ExternalWALink";
 import { useLanguage } from "@/lib/i18n";
 
 export default function Footer() {
-    const { t } = useLanguage();
+    const { t, locale } = useLanguage();
 
     return (
         <footer className="bg-[#0a0f14] border-t border-slate-800/50 relative z-10">
@@ -53,19 +53,23 @@ export default function Footer() {
 
                 {/* Bottom Section */}
                 <div className="mt-8 pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-slate-500">
-                    <div className="flex items-center gap-2">
-                        <span>{t.footer.all_rights_reserved}</span>
-                        <div className="text-slate-500">
-                            <div className="size-4 bg-gradient-to-br from-[#137fec] to-purple-600 rounded-sm flex items-center justify-center">
+                    <div className="flex items-center gap-1.5">
+                        <span className="text-slate-500">{t.footer.all_rights_reserved}</span>
+                        <ExternalTGLink
+                            href="https://t.me/vlad557"
+                            className="flex items-center gap-1.5 hover:text-[#137fec] transition-colors group cursor-pointer"
+                        >
+                            <span className="font-bold text-slate-400 group-hover:text-[#137fec] transition-colors">{t.common.logo}</span>
+                            <div className="size-4 bg-gradient-to-br from-[#137fec] to-purple-600 rounded-sm flex items-center justify-center group-hover:scale-110 transition-transform">
                                 <span className="material-symbols-outlined text-[10px] text-white">code</span>
                             </div>
-                        </div>
+                        </ExternalTGLink>
                     </div>
 
                     <div className="flex flex-wrap justify-center gap-6">
-                        <Link href="/privacy" className="hover:text-white transition-colors">{t.footer.privacy_policy}</Link>
-                        <Link href="/terms" className="hover:text-white transition-colors">{t.footer.terms_of_use}</Link>
-                        <Link href="/cookies" className="hover:text-white transition-colors">{t.footer.cookie_settings}</Link>
+                        <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors">{t.footer.privacy_policy}</Link>
+                        <Link href={`/${locale}/terms`} className="hover:text-white transition-colors">{t.footer.terms_of_use}</Link>
+                        <Link href={`/${locale}/cookies`} className="hover:text-white transition-colors">{t.footer.cookie_settings}</Link>
                     </div>
                 </div>
             </div>

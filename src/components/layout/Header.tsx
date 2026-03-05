@@ -5,7 +5,7 @@ import LanguageSwitcher from "./LanguageSwitcher";
 import { useLanguage } from "@/lib/i18n";
 
 export default function Header() {
-    const { t } = useLanguage();
+    const { t, locale } = useLanguage();
 
     return (
         <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap px-6 py-4 bg-[#1a1f26]/80 backdrop-blur-lg border-b border-slate-700/50 w-full transition-all">
@@ -17,8 +17,8 @@ export default function Header() {
             </Link>
 
             <nav className="hidden md:flex items-center gap-6">
-                <Link className="btn-neu bg-[#1a1f26] text-slate-300 hover:text-white px-5 py-2 rounded-xl transition-colors text-sm font-medium" href="/#services">{t.common.nav.services}</Link>
-                <Link className="btn-neu bg-[#1a1f26] text-slate-300 hover:text-white px-5 py-2 rounded-xl transition-colors text-sm font-medium" href="/legislation">{t.common.nav.legislation}</Link>
+                <Link className="btn-neu bg-[#1a1f26] text-slate-300 hover:text-white px-5 py-2 rounded-xl transition-colors text-sm font-medium" href={`/${locale}/#services`}>{t.common.nav.services}</Link>
+                <Link className="btn-neu bg-[#1a1f26] text-slate-300 hover:text-white px-5 py-2 rounded-xl transition-colors text-sm font-medium" href={`/${locale}/legislation`}>{t.common.nav.legislation}</Link>
             </nav>
 
             <div className="flex items-center gap-4">

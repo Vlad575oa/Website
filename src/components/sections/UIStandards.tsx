@@ -3,7 +3,7 @@
 import { useLanguage } from "@/lib/i18n";
 
 export default function UIStandards() {
-    const { t } = useLanguage();
+    const { t, locale } = useLanguage();
     const tu = t.legislation_page.ui_standards;
 
     return (
@@ -28,7 +28,29 @@ export default function UIStandards() {
                                 <div className="space-y-3 pt-2">
                                     <label className="flex items-start gap-3 text-sm text-slate-400">
                                         <input type="checkbox" checked className="mt-1 size-4 rounded border-slate-600 bg-slate-800 text-[#137fec]" disabled />
-                                        <span>{tu.form.consent_pd.split("персональных данных")[0]}<span className="text-[#137fec] underline">персональных данных</span>{tu.form.consent_pd.split("персональных данных")[1].split("политикой конфиденциальности")[0]}<span className="text-[#137fec] underline">политикой конфиденциальности</span>.</span>
+                                        <span>
+                                            {(() => {
+                                                const pdMatch = locale === 'ru' ? "персональных данных" : "personal data";
+                                                const ppMatch = locale === 'ru' ? "политикой конфиденциальности" : "privacy policy";
+
+                                                if (!tu.form.consent_pd.includes(pdMatch) || !tu.form.consent_pd.includes(ppMatch)) {
+                                                    return tu.form.consent_pd;
+                                                }
+
+                                                const [part1, rest] = tu.form.consent_pd.split(pdMatch);
+                                                const [part2, part3] = rest.split(ppMatch);
+
+                                                return (
+                                                    <>
+                                                        {part1}
+                                                        <span className="text-[#137fec] underline">{pdMatch}</span>
+                                                        {part2}
+                                                        <span className="text-[#137fec] underline">{ppMatch}</span>
+                                                        {part3}
+                                                    </>
+                                                );
+                                            })()}
+                                        </span>
                                     </label>
                                     <label className="flex items-start gap-3 text-sm text-slate-400">
                                         <input type="checkbox" className="mt-1 size-4 rounded border-slate-600 bg-slate-800 text-[#137fec]" disabled />

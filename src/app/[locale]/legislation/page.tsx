@@ -6,18 +6,24 @@ import AntiPenaltyChecklist from "@/components/sections/AntiPenaltyChecklist";
 import PenaltyTable from "@/components/sections/PenaltyTable";
 import LegallyCorrectTexts from "@/components/sections/LegallyCorrectTexts";
 import UIStandards from "@/components/sections/UIStandards";
+import { Meteors } from "@/components/ui/meteors";
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
     const { locale } = await params;
     const t = await getDictionary(locale);
-    const tm = t.legislation_page.hero;
+    const th = t.legislation_page.hero;
 
     return {
-        title: `${tm.title_prefix} ${tm.title_accent}`,
+        title: th.title,
         description: t.legislation_page.checklist.description,
         alternates: {
-            canonical: `https://terra.art/${locale}/legislation`,
+            canonical: `/${locale}/legislation`,
         },
+        openGraph: {
+            title: th.title,
+            description: t.legislation_page.checklist.description,
+            url: `https://devvlad.ru/${locale}/legislation`,
+        }
     };
 }
 
@@ -25,8 +31,15 @@ export default async function LegislationPage({ params }: { params: Promise<{ lo
     const { locale } = await params;
 
     return (
-        <main className="min-h-screen bg-[#0a0f14]">
-            <article>
+        <main className="min-h-screen bg-[#0a0f14] relative overflow-hidden">
+            {/* Unified Page Background */}
+            <div className="fixed inset-0 pointer-events-none z-0">
+                <div className="absolute top-[10%] left-[-10%] size-[600px] bg-[#137fec]/10 rounded-full blur-[150px] opacity-50" />
+                <div className="absolute bottom-[20%] right-[-10%] size-[600px] bg-purple-600/10 rounded-full blur-[150px] opacity-50" />
+                <Meteors number={50} />
+            </div>
+
+            <article className="relative z-10">
                 <LegislationHero />
                 <AntiPenaltyChecklist />
                 <PenaltyTable />
@@ -45,8 +58,8 @@ export default async function LegislationPage({ params }: { params: Promise<{ lo
                         "description": "Профессиональный анализ сайтов на соответствие 152-ФЗ, 168-ФЗ и другим нормативным актам РФ.",
                         "provider": {
                             "@type": "Organization",
-                            "name": "DevStudio",
-                            "url": "https://terra.art"
+                            "name": "DevVlad",
+                            "url": "https://devvlad.ru"
                         },
                         "areaServed": "RU",
                         "hasOfferCatalog": {

@@ -42,7 +42,7 @@ export default function Hero({ t }: HeroProps) {
     };
 
     return (
-        <section className="relative min-h-[calc(100vh-64px)] flex items-center pt-12 pb-20 lg:pt-20 lg:pb-32 overflow-hidden bg-transparent">
+        <section className="relative min-h-[calc(100vh-64px)] flex items-center pt-8 pb-12 lg:pt-12 lg:pb-20 overflow-hidden bg-transparent">
             {/* Background Gradient/Pattern */}
             <div className="absolute inset-0 z-0 h-full w-full overflow-hidden pointer-events-none">
                 {/* Core Sparkles Background */}
@@ -89,9 +89,9 @@ export default function Hero({ t }: HeroProps) {
                     }
                 `}</style>
 
-                <div className="flex flex-col gap-12 lg:flex-row lg:items-start lg:gap-8">
+                <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-8">
                     {/* Left Column: Text Content */}
-                    <div className="flex flex-col gap-8 flex-1 max-w-2xl z-20 pt-4 lg:pt-12">
+                    <div className="flex flex-col gap-8 flex-1 max-w-2xl z-20 pt-2 lg:pt-6">
                         <div className="inline-flex items-center gap-2 w-fit rounded-full bg-slate-800/50 border border-slate-700 px-3 py-1 backdrop-blur-sm opacity-0 animate-[cinematicReveal_1.5s_ease-out_forwards]">
                             <span className="flex h-2 w-2 rounded-full bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)]"></span>
                             <span className="text-xs font-medium text-slate-300">{t.status}</span>
@@ -137,9 +137,9 @@ export default function Hero({ t }: HeroProps) {
                     </div>
 
                     {/* Right Column: Visual Content */}
-                    <div className="relative flex-1 w-full flex flex-col justify-center lg:mt-10 z-10 w-full max-w-[650px] ml-auto">
+                    <div className="relative flex-1 w-full flex flex-col justify-center lg:mt-6 z-10 w-full max-w-[650px] 2xl:max-w-[760px] ml-auto">
                         <div className="absolute inset-0 top-16 bg-gradient-to-tr from-[#137fec]/10 to-purple-500/10 rounded-[2rem] blur-2xl -z-10 transform rotate-3 scale-95"></div>
-                        <div className="relative w-full max-w-[650px] ml-auto group [perspective:2000px]">
+                        <div className="relative w-full max-w-[650px] 2xl:max-w-[760px] ml-auto group [perspective:2000px]">
                             {/* Laptop Frame Mockup */}
                             <div className="relative z-10 bg-[#0f1115] border border-slate-700/50 rounded-xl shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden transform transition-all duration-700 group-hover:[transform:rotateY(-2deg)_rotateX(2deg)]">
                                 <div className="flex items-center gap-2 px-4 py-3 bg-[#13161c] border-b border-slate-800">
@@ -149,11 +149,11 @@ export default function Hero({ t }: HeroProps) {
                                         <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
                                     </div>
                                     <div className="flex-1 mx-4 h-6 bg-[#0a0c10] rounded-md border border-slate-800/80 flex items-center px-3 text-[10px] text-slate-500 font-mono">
-                                        https://devstudio.ru
+                                        https://devvlad.ru
                                     </div>
                                 </div>
 
-                                <div className="aspect-[4/3] w-full bg-[#0a0c10] relative overflow-hidden group/screen">
+                                <div className="aspect-[4/3] 2xl:aspect-video w-full bg-[#0a0c10] relative overflow-hidden group/screen">
                                     <video
                                         ref={videoRef}
                                         autoPlay
@@ -167,8 +167,7 @@ export default function Hero({ t }: HeroProps) {
 
                                     {isVideoEnded && (
                                         <div
-                                            className="absolute inset-0 z-10 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-6 text-center"
-                                            style={{ opacity: 0, animation: 'fadeInSimple 1.5s ease-out forwards' }}
+                                            className="absolute inset-0 z-10 bg-black/80 backdrop-blur-md flex flex-col items-center justify-center p-4 sm:p-6 text-center transition-opacity duration-1000 opacity-100"
                                         >
                                             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-black leading-[1.2] mb-12 lg:mb-16 drop-shadow-2xl">
                                                 <span className="inline-block opacity-0 animate-[cinematicReveal_3s_ease-out_0.8s_forwards] text-purple-400 drop-shadow-md">{t.slogan_1}</span><br />

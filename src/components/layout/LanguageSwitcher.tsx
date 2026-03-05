@@ -1,12 +1,21 @@
 "use client";
 
+import { usePathname, useRouter } from "next/navigation";
 import { useLanguage } from "@/lib/i18n";
 
 export default function LanguageSwitcher() {
     const { locale, setLocale } = useLanguage();
+    const pathname = usePathname();
+    const router = useRouter();
 
     const toggleLocale = () => {
-        setLocale(locale === "ru" ? "en" : "ru");
+        const newLocale = locale === "ru" ? "en" : "ru";
+        setLocale(newLocale);
+
+        // Replace current locale in pathname
+        const segments = pathname.split("/");
+        segments[1] = newLocale;
+        router.push(segments.join("/"));
     };
 
     return (
@@ -16,7 +25,7 @@ export default function LanguageSwitcher() {
             title={locale === "ru" ? "Switch to English" : "Переключить на русский"}
         >
             <span className="text-xl">
-                {locale === "ru" ? "🇺🇸" : "🇷🇺"}
+                {locale === "ru" ? "🇷🇺" : "🇺🇸"}
             </span>
         </button>
     );

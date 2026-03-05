@@ -1,10 +1,20 @@
 import type { Metadata } from "next";
 import { getDictionary } from "@/lib/get-dictionary";
 
-export const metadata: Metadata = {
-    title: "DevStudio - Pricing",
-    description: "Clear, fixed pricing for premium Next.js development. No hidden fees.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const isEn = locale === "en";
+
+    return {
+        title: isEn ? "Pricing | DevVlad" : "Цены | ДевВлад",
+        description: isEn
+            ? "Choose the perfect plan for your project. Transparent pricing for premium web development."
+            : "Выберите идеальный тариф для вашего проекта. Прозрачное ценообразование на премиальную веб-разработку.",
+        alternates: {
+            canonical: `/${locale}/pricing`,
+        }
+    };
+}
 
 export default async function PricingPage({
     params,

@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
         title: t.terms.title,
         description: t.terms.title,
         alternates: {
-            canonical: `https://devstudio.ru/${locale}/terms`,
+            canonical: `/${locale}/terms`,
         },
     };
 }

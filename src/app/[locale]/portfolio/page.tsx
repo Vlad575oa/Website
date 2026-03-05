@@ -2,16 +2,27 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { getDictionary } from "@/lib/get-dictionary";
 import Link from "next/link";
+import { Locale } from "@/lib/i18n";
 
-export const metadata: Metadata = {
-    title: "Studio Nova | Portfolio and Process",
-    description: "A collection of premium web experiences crafted with precision, purpose, and a minimalist aesthetic.",
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {
+    const { locale } = await params;
+    const isEn = locale === "en";
+
+    return {
+        title: isEn ? "Portfolio | DevVlad" : "Портфолио | ДевВлад",
+        description: isEn
+            ? "Explore our latest projects and find inspiration for your next digital product."
+            : "Ознакомьтесь с нашими последними проектами и найдите вдохновение для своего следующего цифрового продукта.",
+        alternates: {
+            canonical: `/${locale}/portfolio`,
+        }
+    };
+}
 
 export default async function PortfolioPage({
     params,
 }: {
-    params: Promise<{ locale: string }>;
+    params: Promise<{ locale: Locale }>;
 }) {
     const { locale } = await params;
     const t = await getDictionary(locale as "ru" | "en");

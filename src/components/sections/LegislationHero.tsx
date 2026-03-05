@@ -2,23 +2,19 @@
 
 import Link from "next/link";
 import { useLanguage } from "@/lib/i18n";
-
 export default function LegislationHero() {
     const { t } = useLanguage();
     const th = t.legislation_page.hero;
 
     return (
-        <section className="relative pt-12 pb-12 overflow-hidden bg-transparent z-10">
-            {/* Background Glows */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full max-w-7xl pointer-events-none">
-                <div className="absolute top-[-20%] left-[-10%] size-[600px] bg-[#137fec]/10 rounded-full blur-[150px] opacity-70" />
-                <div className="absolute bottom-[-10%] right-[-10%] size-[600px] bg-purple-600/10 rounded-full blur-[150px] opacity-70" />
-            </div>
-
+        <section className="relative pt-12 pb-12 bg-transparent z-10">
             <div className="relative max-w-7xl mx-auto px-6 text-center">
-                <h1 className="text-4xl md:text-7xl font-black text-white mb-8 leading-tight max-w-5xl mx-auto">
-                    {th.title_prefix} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#137fec] to-purple-400">{th.title_accent}</span>
+                <h1 className="text-2xl md:text-4xl font-black text-white mb-6 leading-tight max-w-5xl mx-auto">
+                    {th.title}
                 </h1>
+                <p className="text-lg md:text-xl text-slate-400 mb-10 max-w-3xl mx-auto balance-text">
+                    {th.description}
+                </p>
 
                 <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
                     <Link

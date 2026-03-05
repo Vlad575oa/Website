@@ -14,7 +14,7 @@ export default function Expertise({ t }: ExpertiseProps) {
     const icons = ["bolt", "smartphone", "trending_up", "verified_user"];
 
     return (
-        <section className="pt-8 pb-16 px-6 sm:px-10 bg-transparent relative z-10 overflow-hidden">
+        <section id="services" className="pt-8 pb-16 px-6 sm:px-10 bg-transparent relative z-10 overflow-hidden">
             <div className="absolute inset-0 z-0 pointer-events-none">
                 <SparklesCore
                     id="sparkles-expertise"

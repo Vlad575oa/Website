@@ -7,13 +7,31 @@ import Analytics from "@/components/Analytics";
 import FloatingSocials from "@/components/common/FloatingSocials";
 import { Providers } from "@/components/Providers";
 
-export const metadata: Metadata = {
-  title: "DevStudio | Premium Web Development",
-  description: "Modern. Fast. Mobile-Friendly. We craft high-end digital experiences.",
-  alternates: {
-    canonical: "https://example.com",
-  },
-};
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  const isEn = locale === "en";
+
+  return {
+    title: isEn ? "DevVlad | Premium Web Development" : "ДевВлад | Премиальная веб-разработка",
+    description: isEn
+      ? "Modern. Fast. Mobile-Friendly. We craft high-end digital experiences."
+      : "Современная. Быстрая. Адаптивная. Создаем цифровые продукты премиум-класса.",
+    metadataBase: new URL("https://devvlad.ru"),
+    alternates: {
+      canonical: `/${locale}`,
+      languages: {
+        "ru-RU": "/ru",
+        "en-US": "/en",
+      },
+    },
+    openGraph: {
+      type: "website",
+      locale: locale === "ru" ? "ru_RU" : "en_US",
+      url: `https://devvlad.ru/${locale}`,
+      siteName: "DevVlad",
+    },
+  };
+}
 
 export default async function RootLocaleLayout({
   children,

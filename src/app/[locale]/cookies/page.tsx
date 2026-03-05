@@ -12,7 +12,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
         title: t.cookies.title,
         description: t.cookies.title,
         alternates: {
-            canonical: `https://devstudio.ru/${locale}/cookies`,
+            canonical: `/${locale}/cookies`,
         },
     };
 }

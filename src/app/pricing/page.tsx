@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "DevStudio - Pricing",
+    title: "DevVlad - Pricing",
     description: "Clear, fixed pricing for premium Next.js development. No hidden fees.",
 };
 
