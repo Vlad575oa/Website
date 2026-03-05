@@ -1,5 +1,6 @@
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
+import MobileMenu from "./MobileMenu";
 import { getDictionary } from "@/lib/get-dictionary";
 import { Locale } from "@/lib/i18n";
 
@@ -20,8 +21,9 @@ export default async function Header({ locale }: { locale: Locale }) {
                 <Link className="btn-neu bg-[#1a1f26] text-slate-300 hover:text-white px-5 py-2 rounded-xl transition-colors text-sm font-medium" href={`/${locale}/legislation`}>{t.common.nav.legislation}</Link>
             </nav>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3">
                 <LanguageSwitcher />
+                <MobileMenu locale={locale} dict={t.common.nav} />
             </div>
         </header>
     );
