@@ -1,9 +1,8 @@
-"use client";
+interface PenaltyTableProps {
+    t: any;
+}
 
-import { useLanguage } from "@/lib/i18n";
-
-export default function PenaltyTable() {
-    const { t } = useLanguage();
+export default function PenaltyTable({ t }: PenaltyTableProps) {
     const tp = t.legislation_page.penalties;
 
     return (
@@ -23,7 +22,7 @@ export default function PenaltyTable() {
                             </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-700/50">
-                            {tp.rows.map((item, i) => (
+                            {tp.rows.map((item: any, i: number) => (
                                 <tr key={i} className={`group hover:bg-white/5 transition-colors ${item.highlight ? "bg-red-500/5" : ""}`}>
                                     <td className="p-6">
                                         <div className="font-bold text-white group-hover:text-blue-300 transition-colors">{item.violation}</div>

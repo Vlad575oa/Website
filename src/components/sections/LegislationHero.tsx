@@ -1,9 +1,12 @@
-"use client";
-
 import Link from "next/link";
-import { useLanguage } from "@/lib/i18n";
-export default function LegislationHero() {
-    const { t } = useLanguage();
+import { Locale } from "@/lib/i18n";
+
+interface LegislationHeroProps {
+    t: any;
+    locale: Locale;
+}
+
+export default function LegislationHero({ t, locale }: LegislationHeroProps) {
     const th = t.legislation_page.hero;
 
     return (

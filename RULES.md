@@ -20,6 +20,8 @@ Every page must target:
 ---
 
 ## 🛑 ABSOLUTE ARCHITECTURAL RULES
+### 0. Git & Workflow Law
+* **Do not push commits to GitHub without my approval.**
 ### 1. Above-the-fold content MUST be server-rendered
 Never place the following inside client components:
 * Hero section

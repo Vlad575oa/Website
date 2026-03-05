@@ -1,9 +1,11 @@
-"use client";
+import { Locale } from "@/lib/i18n";
 
-import { useLanguage } from "@/lib/i18n";
+interface UIStandardsProps {
+    t: any;
+    locale: Locale;
+}
 
-export default function UIStandards() {
-    const { t, locale } = useLanguage();
+export default function UIStandards({ t, locale }: UIStandardsProps) {
     const tu = t.legislation_page.ui_standards;
 
     return (
@@ -98,7 +100,7 @@ export default function UIStandards() {
                         <div className="space-y-4">
                             <div className="text-xs font-black text-slate-600 uppercase tracking-wider mb-2">{tu.footer.legal_title}</div>
                             <ul className="space-y-2 text-sm text-slate-400">
-                                {tu.footer.legal_links.map((link, i) => (
+                                {tu.footer.legal_links.map((link: string, i: number) => (
                                     <li key={i} className="hover:text-white cursor-pointer transition-colors">{link}</li>
                                 ))}
                             </ul>

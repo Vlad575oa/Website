@@ -1,23 +1,11 @@
-"use client";
+import CopyButton from "../ui/CopyButton";
 
-import { useState, useEffect } from "react";
-import { useLanguage } from "@/lib/i18n";
+interface LegallyCorrectTextsProps {
+    t: any;
+}
 
-export default function LegallyCorrectTexts() {
-    const { t } = useLanguage();
+export default function LegallyCorrectTexts({ t }: LegallyCorrectTextsProps) {
     const tc = t.legislation_page.correct_texts;
-    const [copiedId, setCopiedId] = useState<string | null>(null);
-
-    const copyToClipboard = (id: string, text: string) => {
-        navigator.clipboard.writeText(text);
-        setCopiedId(id);
-    };
-
-    useEffect(() => {
-        if (!copiedId) return;
-        const timer = setTimeout(() => setCopiedId(null), 2000);
-        return () => clearTimeout(timer);
-    }, [copiedId]);
 
     return (
         <section className="pt-10 pb-10 bg-transparent relative z-10">
@@ -28,25 +16,14 @@ export default function LegallyCorrectTexts() {
                 </div>
 
                 <div className="space-y-6">
-                    {tc.texts.map((item, idx) => {
+                    {tc.texts.map((item: any, idx: number) => {
                         const id = `text-${idx}`;
                         return (
                             <div key={id} className="p-8 rounded-3xl bg-[#1a1f26]/60 backdrop-blur-md border border-slate-700/50 group relative hover:border-[#137fec]/30 transition-all">
                                 <h3 className="text-sm font-black text-slate-500 uppercase tracking-widest mb-4">{item.title}</h3>
                                 <p className="text-slate-200 text-lg leading-relaxed pr-20">{item.content}</p>
 
-                                <button
-                                    onClick={() => copyToClipboard(id, item.content)}
-                                    className={`absolute top-8 right-8 size-12 rounded-xl flex items-center justify-center transition-all ${copiedId === id
-                                        ? "bg-green-500 text-white"
-                                        : "bg-white text-slate-400 hover:text-[#137fec] hover:shadow-lg border border-slate-200"
-                                        }`}
-                                    title="Скопировать"
-                                >
-                                    <span className="material-symbols-outlined text-[20px]">
-                                        {copiedId === id ? "done" : "content_copy"}
-                                    </span>
-                                </button>
+                                <CopyButton title="Скопировать" content={item.content} />
                             </div>
                         );
                     })}

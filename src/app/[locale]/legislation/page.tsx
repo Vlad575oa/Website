@@ -29,6 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
 
 export default async function LegislationPage({ params }: { params: Promise<{ locale: Locale }> }) {
     const { locale } = await params;
+    const t = await getDictionary(locale);
 
     return (
         <main className="min-h-screen bg-[#0a0f14] relative overflow-hidden">
@@ -40,11 +41,11 @@ export default async function LegislationPage({ params }: { params: Promise<{ lo
             </div>
 
             <article className="relative z-10">
-                <LegislationHero />
-                <AntiPenaltyChecklist />
-                <PenaltyTable />
-                <LegallyCorrectTexts />
-                <UIStandards />
+                <LegislationHero t={t} locale={locale} />
+                <AntiPenaltyChecklist t={t} />
+                <PenaltyTable t={t} />
+                <LegallyCorrectTexts t={t} />
+                <UIStandards t={t} locale={locale} />
             </article>
 
             {/* Schema.org Structured Data */}
