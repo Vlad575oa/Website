@@ -7,7 +7,15 @@ const locales = ["ru", "en"];
 const defaultLocale = "ru";
 
 function getLocale(request: NextRequest): string {
-    const headers = { "accept-language": request.headers.get("accept-language") || "" };
+    const acceptLanguage = request.headers.get("accept-language") || "";
+
+    // Explicitly prioritize Russian if it's present in the headers at all.
+    // This handles cases where English might have higher q-factor but user knows Russian.
+    if (acceptLanguage.toLowerCase().includes("ru")) {
+        return "ru";
+    }
+
+    const headers = { "accept-language": acceptLanguage };
     const languages = new Negotiator({ headers }).languages();
 
     try {

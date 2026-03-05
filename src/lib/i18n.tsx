@@ -22,11 +22,6 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
         const savedLocale = localStorage.getItem("NEXT_LOCALE") as Locale;
         if (savedLocale && (savedLocale === "ru" || savedLocale === "en")) {
             setLocaleState(savedLocale);
-        } else {
-            const browserLang = navigator.language.slice(0, 2);
-            if (browserLang === "en") {
-                setLocaleState("en");
-            }
         }
     }, []);
 
