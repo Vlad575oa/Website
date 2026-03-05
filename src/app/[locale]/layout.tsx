@@ -44,11 +44,11 @@ export default async function RootLocaleLayout({
 
   return (
     <div lang={locale} className="scroll-smooth">
-      <Header />
+      <Header locale={locale as any} />
       <main className="flex-1 w-full flex flex-col">
         {children}
       </main>
-      <Footer />
+      <Footer locale={locale as any} />
       <Analytics />
       <FloatingSocials />
     </div>

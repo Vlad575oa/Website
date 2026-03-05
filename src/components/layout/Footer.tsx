@@ -1,12 +1,11 @@
-"use client";
-
 import Link from "next/link";
 import ExternalTGLink from "../common/ExternalTGLink";
 import ExternalWALink from "../common/ExternalWALink";
-import { useLanguage } from "@/lib/i18n";
+import { getDictionary } from "@/lib/get-dictionary";
+import { Locale } from "@/lib/i18n";
 
-export default function Footer() {
-    const { t, locale } = useLanguage();
+export default async function Footer({ locale }: { locale: Locale }) {
+    const t = await getDictionary(locale);
 
     return (
         <footer className="bg-[#0a0f14] border-t border-slate-800/50 relative z-10">
@@ -34,43 +33,34 @@ export default function Footer() {
                         <ExternalWALink
                             href="https://wa.me/79263177226"
                             className="flex items-center justify-center size-10 rounded-lg bg-slate-800 hover:bg-slate-700 text-[#25D366] border border-slate-700 transition-all hover:scale-110 shadow-lg shadow-[#25D366]/5"
+                            title="WhatsApp"
                         >
-                            <svg className="w-8 h-8 fill-current" viewBox="0 0 24 24">
-                                <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766 0-3.18-2.587-5.766-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.747-2.874-2.512-2.96-2.626-.087-.115-.708-.941-.708-1.797 0-.856.448-1.277.607-1.441.159-.164.346-.205.462-.205.115 0 .231.001.332.006.107.005.25-.04.391.299.144.35.491 1.2.534 1.287.043.087.072.188.014.304-.058.115-.087.188-.173.289l-.26.304c-.087.101-.177.211-.077.383.101.173.447.739.96 1.196.662.593 1.22.78 1.393.866.173.087.274.072.376-.043.101-.115.433-.505.548-.678.115-.173.231-.144.39-.087.159.058 1.011.477 1.184.564.173.087.289.13.332.202.045.072.045.419-.1.824z" />
+                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.414 0 .004 5.412.001 12.049c0 2.123.554 4.197 1.607 6.037L0 24l6.105-1.602a11.834 11.834 0 005.937 1.598h.005c6.637 0 12.048-5.412 12.051-12.049a11.829 11.829 0 00-3.411-8.514z" />
                             </svg>
                         </ExternalWALink>
-
                         <ExternalTGLink
-                            href="https://t.me/vlad557"
+                            href="https://t.me/Vladislav_Olejnik"
                             className="flex items-center justify-center size-10 rounded-lg bg-slate-800 hover:bg-slate-700 text-[#0088cc] border border-slate-700 transition-all hover:scale-110 shadow-lg shadow-[#0088cc]/5"
+                            title="Telegram"
                         >
-                            <svg className="w-6 h-6 fill-current" viewBox="0 0 24 24">
-                                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.11.02-1.93 1.23-5.46 3.62-.51.35-.98.52-1.4.51-.46-.01-1.35-.26-2.01-.48-.81-.27-1.45-.42-1.39-.88.03-.24.37-.48 1.01-.73 3.94-1.71 6.57-2.84 7.89-3.38 3.76-1.54 4.54-1.81 5.05-1.82.11 0 .36.03.52.17.13.11.17.26.18.37.01.08 0 .23-.02.32z" />
+                            <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24">
+                                <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.891 8.221l-1.97 9.284c-.149.658-.541.821-1.092.511l-3-2.21-1.447 1.393c-.16.16-.295.295-.604.295l.215-3.051 5.553-5.018c.241-.215-.053-.334-.374-.12l-6.864 4.32-2.956-.924c-.642-.201-.655-.642.134-.949l11.554-4.451c.535-.195.998.125.791.721z" />
                             </svg>
                         </ExternalTGLink>
                     </div>
                 </div>
 
-                {/* Bottom Section */}
-                <div className="mt-8 pt-8 border-t border-slate-800/50 flex flex-col md:flex-row justify-between items-center gap-4 text-[12px] text-slate-500">
-                    <div className="flex items-center gap-1.5">
-                        <span className="text-slate-500">{t.footer.all_rights_reserved}</span>
-                        <ExternalTGLink
-                            href="https://t.me/vlad557"
-                            className="flex items-center gap-1.5 hover:text-[#137fec] transition-colors group cursor-pointer"
-                        >
-                            <span className="font-bold text-slate-400 group-hover:text-[#137fec] transition-colors">{t.common.logo}</span>
-                            <div className="size-4 bg-gradient-to-br from-[#137fec] to-purple-600 rounded-sm flex items-center justify-center group-hover:scale-110 transition-transform">
-                                <span className="material-symbols-outlined text-[10px] text-white">code</span>
-                            </div>
-                        </ExternalTGLink>
-                    </div>
-
-                    <div className="flex flex-wrap justify-center gap-6">
-                        <Link href={`/${locale}/privacy`} className="hover:text-white transition-colors">{t.footer.privacy_policy}</Link>
-                        <Link href={`/${locale}/terms`} className="hover:text-white transition-colors">{t.footer.terms_of_use}</Link>
-                        <Link href={`/${locale}/cookies`} className="hover:text-white transition-colors">{t.footer.cookie_settings}</Link>
-                    </div>
+                <div className="mt-8 pt-6 border-t border-slate-800/50 flex flex-wrap justify-center gap-x-8 gap-y-4">
+                    <Link href={`/${locale}/privacy`} className="text-slate-500 text-xs hover:text-[#137fec] transition-colors">
+                        {t.footer.privacy_policy}
+                    </Link>
+                    <Link href={`/${locale}/terms`} className="text-slate-500 text-xs hover:text-[#137fec] transition-colors">
+                        {t.footer.terms_of_use}
+                    </Link>
+                    <Link href={`/${locale}/cookies`} className="text-slate-500 text-xs hover:text-[#137fec] transition-colors">
+                        {t.footer.cookie_settings}
+                    </Link>
                 </div>
             </div>
         </footer>

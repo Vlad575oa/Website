@@ -1,15 +1,14 @@
-"use client";
-
 import Link from "next/link";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { useLanguage } from "@/lib/i18n";
+import { getDictionary } from "@/lib/get-dictionary";
+import { Locale } from "@/lib/i18n";
 
-export default function Header() {
-    const { t, locale } = useLanguage();
+export default async function Header({ locale }: { locale: Locale }) {
+    const t = await getDictionary(locale);
 
     return (
         <header className="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap px-6 py-4 bg-[#1a1f26]/80 backdrop-blur-lg border-b border-slate-700/50 w-full transition-all">
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href={`/${locale}`} className="flex items-center gap-3 group">
                 <div className="flex items-center justify-center size-10 rounded-xl bg-gradient-to-br from-[#137fec] to-purple-600 text-white tile-neu transition-transform group-hover:scale-105">
                     <span className="material-symbols-outlined !text-[24px]">code</span>
                 </div>
@@ -23,7 +22,6 @@ export default function Header() {
 
             <div className="flex items-center gap-4">
                 <LanguageSwitcher />
-
             </div>
         </header>
     );
