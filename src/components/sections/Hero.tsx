@@ -50,7 +50,7 @@ export default function Hero({ t }: HeroProps) {
                         </div>
 
                         <div className="flex flex-col gap-4 text-left">
-                            <h1 className="text-white text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
+                            <h1 className="text-white text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight hero-title">
                                 <span className="block mb-2">{t.title_prefix}</span>
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-[#137fec] to-blue-500">
                                     {t.title_accent_1} {t.title_accent_2}

@@ -21,12 +21,23 @@ export default function RootLayout({
                             }
                             body {
                                 background-color: #101822;
+                                color: white;
                                 margin: 0;
                                 overflow-x: hidden;
+                            }
+                            header {
+                                position: sticky;
+                                top: 0;
+                                z-index: 50;
+                                background: rgba(26, 31, 38, 0.8);
+                                backdrop-filter: blur(12px);
+                                border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+                                height: 73px;
                             }
                             .hero-bg-dark { background-color: #0a0c10; }
                             .aspect-monitor { aspect-ratio: 4/3; }
                             @media (min-width: 1536px) { .aspect-monitor { aspect-ratio: 16/9; } }
+                            .hero-title { font-weight: 900; line-height: 1.1; }
                         `,
                     }}
                 />

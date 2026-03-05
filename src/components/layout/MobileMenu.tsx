@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Locale } from "@/lib/i18n";
 
@@ -14,6 +14,18 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ locale, dict }: MobileMenuProps) {
     const [isOpen, setIsOpen] = useState(false);
+
+    // Lock scroll when menu is open
+    useEffect(() => {
+        if (isOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "unset";
+        }
+        return () => {
+            document.body.style.overflow = "unset";
+        };
+    }, [isOpen]);
 
     return (
         <div className="md:hidden">
