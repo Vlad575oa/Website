@@ -4,7 +4,7 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
 const locales = ["ru", "en"];
-const defaultLocale = "en";
+const defaultLocale = "ru";
 
 function getLocale(request: NextRequest): string {
     const headers = { "accept-language": request.headers.get("accept-language") || "" };
@@ -35,7 +35,10 @@ export function middleware(request: NextRequest) {
 
     // Force HTTPS if running behind a proxy (like Traefik in Dokploy)
     const forwardedProto = request.headers.get("x-forwarded-proto");
-    if (forwardedProto === "https") {
+    const forwardedHost = request.headers.get("x-forwarded-host");
+
+    // If we're on the production domain and not on https, or if the proxy says it's https
+    if (forwardedProto === "https" || (forwardedHost === "devvlad.ru" && !request.nextUrl.protocol.includes("https"))) {
         url.protocol = "https:";
     }
 
