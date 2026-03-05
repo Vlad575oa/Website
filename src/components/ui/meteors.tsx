@@ -1,6 +1,5 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { motion } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 export const Meteors = ({
@@ -21,15 +20,12 @@ export const Meteors = ({
     if (!isMounted) return null;
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
+        <div
+            className="animate-[fadeIn_0.5s_ease-in-out]"
         >
             {meteors.map((el, idx) => {
                 const meteorCount = number || 20;
-                // Calculate position to evenly distribute meteors across container width
-                const position = idx * (100 / meteorCount); // Distribute evenly across 100%
+                const position = idx * (100 / meteorCount);
 
                 return (
                     <span
@@ -40,14 +36,14 @@ export const Meteors = ({
                             className,
                         )}
                         style={{
-                            top: "-40px", // Start above the container
+                            top: "-40px",
                             left: position + "%",
-                            animationDelay: Math.random() * 5 + "s", // Random delay between 0-5s
-                            animationDuration: Math.floor(Math.random() * (10 - 5) + 5) + "s", // Keep some randomness in duration
+                            animationDelay: Math.random() * 5 + "s",
+                            animationDuration: Math.floor(Math.random() * (10 - 5) + 5) + "s",
                         }}
                     ></span>
                 );
             })}
-        </motion.div>
+        </div>
     );
 };
