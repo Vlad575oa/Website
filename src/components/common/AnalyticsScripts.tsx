@@ -33,35 +33,36 @@ export default function AnalyticsScripts() {
     return (
         <>
             <Script
-                id="tmr-code"
-                strategy="lazyOnload"
+                id="analytics-init"
+                strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                     __html: `
-                        var _tmr = window._tmr || (window._tmr = []);
-                        _tmr.push({id: "3747120", type: "pageView", start: (new Date()).getTime()});
-                        (function (d, w, id) {
-                          if (d.getElementById(id)) return;
-                          var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
-                          ts.src = "https://top-fwz1.mail.ru/js/code.js";
-                          var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
-                          if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
-                        })(document, window, "tmr-code");
-                    `,
-                }}
-            />
-            <Script
-                id="yandex-metrika"
-                strategy="lazyOnload"
-                dangerouslySetInnerHTML={{
-                    __html: `
-                        (function(m,e,t,r,i,k,a){
-                            m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-                            m[i].l=1*new Date();
-                            for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-                            k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-                        })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107155780', 'ym');
+                        window.requestIdleCallback = window.requestIdleCallback || function(cb) {
+                            return setTimeout(function() { cb({ didTimeout: false, timeRemaining: function() { return 50; } }); }, 1);
+                        };
+                        
+                        requestIdleCallback(() => {
+                            // TMR
+                            var _tmr = window._tmr || (window._tmr = []);
+                            _tmr.push({id: "3747120", type: "pageView", start: (new Date()).getTime()});
+                            (function (d, w, id) {
+                              if (d.getElementById(id)) return;
+                              var ts = d.createElement("script"); ts.type = "text/javascript"; ts.async = true; ts.id = id;
+                              ts.src = "https://top-fwz1.mail.ru/js/code.js";
+                              var f = function () {var s = d.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ts, s);};
+                              if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); }
+                            })(document, window, "tmr-code");
 
-                        ym(107155780, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+                            // Yandex Metrika
+                            (function(m,e,t,r,i,k,a){
+                                m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+                                m[i].l=1*new Date();
+                                for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+                                k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+                            })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=107155780', 'ym');
+
+                            ym(107155780, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+                        });
                     `,
                 }}
             />

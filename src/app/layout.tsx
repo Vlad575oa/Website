@@ -13,9 +13,27 @@ export default function RootLayout({
     return (
         <html lang="ru" className="scroll-smooth">
             <head>
+                <style
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            :root {
+                                --color-background-dark: #101822;
+                            }
+                            body {
+                                background-color: #101822;
+                                margin: 0;
+                                overflow-x: hidden;
+                            }
+                            .hero-bg-dark { background-color: #0a0c10; }
+                            .aspect-monitor { aspect-ratio: 4/3; }
+                            @media (min-width: 1536px) { .aspect-monitor { aspect-ratio: 16/9; } }
+                        `,
+                    }}
+                />
                 <link rel="icon" href="/favicon.jpg" type="image/jpeg" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+                <link rel="preload" href="/hero-mockup.webp" as="image" fetchPriority="high" />
                 <script
                     dangerouslySetInnerHTML={{
                         __html: `

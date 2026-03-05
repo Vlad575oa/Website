@@ -45,12 +45,14 @@ export default function HeroVisual({ t }: HeroVisualProps) {
                         </div>
                     </div>
 
-                    <div className="aspect-[4/3] 2xl:aspect-video w-full bg-[#0a0c10] relative overflow-hidden group/screen">
+                    <div className="aspect-monitor w-full hero-bg-dark relative overflow-hidden group/screen">
                         <video
                             ref={videoRef}
                             autoPlay
                             muted
                             playsInline
+                            preload="auto"
+                            poster="/hero-mockup.webp"
                             onEnded={handleVideoEnd}
                             className="absolute inset-0 w-full h-full object-cover opacity-90 mix-blend-screen"
                         >
