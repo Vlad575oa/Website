@@ -1,23 +1,21 @@
 @import "tailwindcss";
 
-@layer theme {
-  @theme {
-    --color-background-light: #f6f7f8;
-    --color-background-dark: #101822;
-    --color-primary: #136dec;
-    --color-border-dark: #2a3645;
-    --color-surface-dark: #1c242f;
+@theme {
+  --color-background-light: #f6f7f8;
+  --color-background-dark: #101822;
+  --color-primary: #136dec;
+  --color-border-dark: #2a3645;
+  --color-surface-dark: #1c242f;
 
-    --font-display: var(--font-manrope), var(--font-noto-sans), var(--font-inter), ui-sans-serif, system-ui, sans-serif,
-      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --font-alumni: var(--font-alumni-sans), sans-serif;
+  --font-display: var(--font-manrope), var(--font-noto-sans), var(--font-inter), ui-sans-serif, system-ui, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-alumni: var(--font-alumni-sans), sans-serif;
 
-    /* Neumorphic variables */
-    --neu-height: 1;
-    --neu-light: rgba(255, 255, 255, 0.05);
-    --neu-shadow: rgba(0, 0, 0, 0.5);
-    --neu-light-intense: rgba(255, 255, 255, 0.1);
-  }
+  /* Neumorphic variables */
+  --neu-height: 1;
+  --neu-light: rgba(255, 255, 255, 0.05);
+  --neu-shadow: rgba(0, 0, 0, 0.5);
+  --neu-light-intense: rgba(255, 255, 255, 0.1);
 }
 
 @utility animate-meteor-effect {

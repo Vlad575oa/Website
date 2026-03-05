@@ -1,10 +1,5 @@
 import Image from "next/image";
-import dynamic from "next/dynamic";
-
-const SparklesCore = dynamic(() => import("../ui/sparkles").then(mod => mod.SparklesCore), {
-    ssr: false,
-    loading: () => <div className="absolute inset-0 bg-gradient-to-bl from-slate-900/10 to-transparent" />
-});
+import { SparklesCore } from "../ui/sparkles";
 
 interface PortfolioProps {
     t: {
