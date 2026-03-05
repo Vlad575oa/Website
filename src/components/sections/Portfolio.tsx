@@ -16,9 +16,9 @@ interface PortfolioProps {
 
 export default function Portfolio({ t }: PortfolioProps) {
     const images = [
-        "/1_Visa.png",
-        "/Landscape.png",
-        "/Transresource.png",
+        "/1_Visa.jpg",
+        "/Landscape.jpg",
+        "/Transresource.jpg",
     ];
 
     const projects = t.projects.map((p, i) => ({
