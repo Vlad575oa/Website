@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect, useId, useRef, useMemo } from "react";
-import Particles from "@tsparticles/react";
+import { useState, useEffect, useId, useRef, useMemo, useCallback } from "react";
 import { cn } from "@/lib/utils";
 
 type ParticlesProps = {
@@ -17,7 +16,6 @@ type ParticlesProps = {
 
 const observerOptions: IntersectionObserverInit = { threshold: 0.1 };
 
-// Custom hook for intersection observer to handle visibility
 const useIntersectionObserver = (
     ref: React.RefObject<Element | null>,
     options: IntersectionObserverInit = observerOptions
@@ -57,6 +55,37 @@ export const SparklesCore = (props: ParticlesProps) => {
     const isVisible = useIntersectionObserver(containerRef);
     const generatedId = useId();
 
+    const [engineReady, setEngineReady] = useState(false);
+    const [ParticlesComponent, setParticlesComponent] = useState<any>(null);
+
+    // Lazy-load tsparticles only when the component becomes visible
+    useEffect(() => {
+        if (!isVisible || engineReady) return;
+
+        let cancelled = false;
+
+        (async () => {
+            const [{ default: Particles }, { initParticlesEngine }, { loadSlim }] = await Promise.all([
+                import("@tsparticles/react"),
+                import("@tsparticles/react"),
+                import("@tsparticles/slim"),
+            ]);
+
+            if (cancelled) return;
+
+            await initParticlesEngine(async (engine) => {
+                await loadSlim(engine);
+            });
+
+            if (cancelled) return;
+
+            setParticlesComponent(() => Particles);
+            setEngineReady(true);
+        })();
+
+        return () => { cancelled = true; };
+    }, [isVisible, engineReady]);
+
     const particlesOptions = useMemo(() => ({
         background: {
             color: {
@@ -66,7 +95,7 @@ export const SparklesCore = (props: ParticlesProps) => {
         fullScreen: {
             enable: false,
         },
-        fpsLimit: 120, // Increased for maximum smoothness
+        fpsLimit: 60,
         interactivity: {
             events: {
                 onClick: {
@@ -133,8 +162,8 @@ export const SparklesCore = (props: ParticlesProps) => {
 
     return (
         <div ref={containerRef} className={cn("h-full w-full", className)}>
-            {isVisible && (
-                <Particles
+            {isVisible && engineReady && ParticlesComponent && (
+                <ParticlesComponent
                     id={id || generatedId}
                     className="h-full w-full"
                     options={particlesOptions}

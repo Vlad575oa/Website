@@ -116,6 +116,48 @@
       opacity: 0;
     }
   }
+
+  @keyframes purpleShimmer {
+
+    0%,
+    100% {
+      color: white;
+      text-shadow: none;
+    }
+
+    50% {
+      color: #d8b4fe;
+      text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    }
+  }
+
+  @keyframes blueShimmer {
+
+    0%,
+    100% {
+      color: white;
+      text-shadow: none;
+    }
+
+    50% {
+      color: #93c5fd;
+      text-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+  }
+
+  @keyframes greenShimmer {
+
+    0%,
+    100% {
+      color: white;
+      text-shadow: none;
+    }
+
+    50% {
+      color: #86efac;
+      text-shadow: 0 0 10px rgba(34, 197, 94, 0.5);
+    }
+  }
 }
 
 @utility animate-meteor-effect {

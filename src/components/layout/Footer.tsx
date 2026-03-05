@@ -40,7 +40,7 @@ export default async function Footer({ locale }: { locale: Locale }) {
                             </svg>
                         </ExternalWALink>
                         <ExternalTGLink
-                            href="https://t.me/Vladislav_Olejnik"
+                            href="https://t.me/vlad557"
                             className="flex items-center justify-center size-10 rounded-lg bg-slate-800 hover:bg-slate-700 text-[#0088cc] border border-slate-700 transition-all hover:scale-110 shadow-lg shadow-[#0088cc]/5"
                             title="Telegram"
                         >

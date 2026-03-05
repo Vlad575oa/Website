@@ -40,24 +40,6 @@ export default function Hero({ t }: HeroProps) {
             </div>
 
             <div className="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 md:px-8 relative z-10">
-                <style>{`
-                    @keyframes cinematicReveal {
-                        0% { opacity: 0; transform: translateY(20px); filter: blur(10px); }
-                        100% { opacity: 1; transform: translateY(0); filter: blur(0); }
-                    }
-                    @keyframes purpleShimmer {
-                        0%, 100% { color: white; text-shadow: none; }
-                        50% { color: #d8b4fe; text-shadow: 0 0 10px rgba(168, 85, 247, 0.5); }
-                    }
-                    @keyframes blueShimmer {
-                        0%, 100% { color: white; text-shadow: none; }
-                        50% { color: #93c5fd; text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
-                    }
-                    @keyframes greenShimmer {
-                        0%, 100% { color: white; text-shadow: none; }
-                        50% { color: #86efac; text-shadow: 0 0 10px rgba(34, 197, 94, 0.5); }
-                    }
-                `}</style>
 
                 <div className="flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-8">
                     {/* Left Column: Text Content */}
