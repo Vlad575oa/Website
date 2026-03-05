@@ -4,7 +4,7 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 
 const locales = ["ru", "en"];
-const defaultLocale = "ru";
+const defaultLocale = "en";
 
 function getLocale(request: NextRequest): string {
     const headers = { "accept-language": request.headers.get("accept-language") || "" };
@@ -29,9 +29,17 @@ export function middleware(request: NextRequest) {
 
     // Redirect if there is no locale
     const locale = getLocale(request);
-    request.nextUrl.pathname = `/${locale}${pathname}`;
 
-    return NextResponse.redirect(request.nextUrl);
+    const url = request.nextUrl.clone();
+    url.pathname = `/${locale}${pathname}`;
+
+    // Force HTTPS if running behind a proxy (like Traefik in Dokploy)
+    const forwardedProto = request.headers.get("x-forwarded-proto");
+    if (forwardedProto === "https") {
+        url.protocol = "https:";
+    }
+
+    return NextResponse.redirect(url);
 }
 
 export const config = {
