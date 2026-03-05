@@ -1,6 +1,8 @@
 import { inter, manrope, notoSans, alumniSans } from "@/lib/fonts";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
+import AnalyticsScripts from "@/components/common/AnalyticsScripts";
+import CookieBanner from "@/components/common/CookieBanner";
 
 export default function RootLayout({
     children,
@@ -12,15 +14,29 @@ export default function RootLayout({
             <head>
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <link
-                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-                    rel="stylesheet"
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            var d=document,l=d.createElement('link');
+                            l.rel='stylesheet';
+                            l.href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap';
+                            d.head.appendChild(l);
+                        `,
+                    }}
                 />
+                <noscript>
+                    <link
+                        rel="stylesheet"
+                        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+                    />
+                </noscript>
             </head>
             <body className={`${inter.variable} ${manrope.variable} ${notoSans.variable} ${alumniSans.variable} font-display bg-[#101922] text-slate-100 antialiased flex flex-col min-h-screen overflow-x-hidden`}>
                 <Providers>
                     {children}
+                    <CookieBanner />
                 </Providers>
+                <AnalyticsScripts />
             </body>
         </html>
     );
