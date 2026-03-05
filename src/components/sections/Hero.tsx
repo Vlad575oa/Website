@@ -1,4 +1,4 @@
-import { SparklesCore } from "@/components/ui/sparkles";
+import SparkleBackgroundClient from "./SparkleBackgroundClient";
 import HeroVisual from "./HeroVisual";
 
 interface HeroProps {
@@ -26,17 +26,7 @@ export default function Hero({ t }: HeroProps) {
             {/* Background Gradient/Pattern */}
             <div className="absolute inset-0 z-0 h-full w-full overflow-hidden pointer-events-none">
                 {/* Core Sparkles Background */}
-                <div className="w-full absolute inset-0 z-10">
-                    <SparklesCore
-                        id="tsparticlesfullpage"
-                        background="transparent"
-                        minSize={0.6}
-                        maxSize={1.4}
-                        particleDensity={100}
-                        className="w-full h-full"
-                        particleColor="#FFFFFF"
-                    />
-                </div>
+                <SparkleBackgroundClient />
             </div>
 
             <div className="w-full max-w-7xl 2xl:max-w-[1600px] mx-auto px-6 md:px-8 relative z-10">

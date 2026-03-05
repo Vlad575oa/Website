@@ -33,6 +33,13 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   };
 }
 
+export async function generateStaticParams() {
+  return [
+    { locale: "en" },
+    { locale: "ru" },
+  ];
+}
+
 export default async function RootLocaleLayout({
   children,
   params,

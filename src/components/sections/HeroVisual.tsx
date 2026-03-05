@@ -51,7 +51,7 @@ export default function HeroVisual({ t }: HeroVisualProps) {
                             autoPlay
                             muted
                             playsInline
-                            preload="auto"
+                            preload="none"
                             poster="/hero-mockup.webp"
                             onEnded={handleVideoEnd}
                             className="absolute inset-0 w-full h-full object-cover opacity-90 mix-blend-screen"
