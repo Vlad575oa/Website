@@ -4,6 +4,8 @@ const nextConfig: NextConfig = {
   output: 'standalone',
   compress: true,
   poweredByHeader: false,
+  optimizeCss: true,
+  reactStrictMode: true,
   images: {
     remotePatterns: [
       {
@@ -13,6 +15,9 @@ const nextConfig: NextConfig = {
         pathname: "/**",
       },
     ],
+  },
+  experimental: {
+    optimizePackageImports: ['@tsparticles/react', '@tsparticles/slim'],
   },
 };
 

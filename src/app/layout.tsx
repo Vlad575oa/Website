@@ -1,5 +1,6 @@
 import { inter, manrope, notoSans, alumniSans } from "@/lib/fonts";
 import "./globals.css";
+import "./animations.css";
 import { Providers } from "@/components/Providers";
 import AnalyticsScripts from "@/components/common/AnalyticsScripts";
 import CookieBanner from "@/components/common/CookieBanner";
@@ -15,17 +16,16 @@ export default function RootLayout({
                 <link rel="icon" href="/favicon.jpg" type="image/jpeg" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                            var d=document,l=d.createElement('link');
-                            l.rel='stylesheet';
-                            l.media='print';
-                            l.onload=function(){l.media='all'};
-                            l.href='https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=swap';
-                            d.head.appendChild(l);
-                        `,
-                    }}
+                <link
+                    rel="preload"
+                    as="style"
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=swap"
+                />
+                <link
+                    rel="stylesheet"
+                    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@24,400,0..1&display=swap"
+                    media="print"
+                    onLoad="this.media='all'"
                 />
                 <noscript>
                     <link

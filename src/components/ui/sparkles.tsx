@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useId, useRef, useMemo, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 type ParticlesProps = {
@@ -16,29 +16,6 @@ type ParticlesProps = {
 
 const observerOptions: IntersectionObserverInit = { threshold: 0.1 };
 
-const useIntersectionObserver = (
-    ref: React.RefObject<Element | null>,
-    options: IntersectionObserverInit = observerOptions
-) => {
-    const [isVisible, setIsVisible] = useState(false);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver(([entry]) => {
-            setIsVisible(entry.isIntersecting);
-        }, options);
-
-        if (ref.current) {
-            observer.observe(ref.current);
-        }
-
-        return () => {
-            observer.disconnect();
-        };
-    }, [ref, options]);
-
-    return isVisible;
-};
-
 export const SparklesCore = (props: ParticlesProps) => {
     const {
         id,
@@ -52,123 +29,102 @@ export const SparklesCore = (props: ParticlesProps) => {
     } = props;
 
     const containerRef = useRef<HTMLDivElement>(null);
-    const isVisible = useIntersectionObserver(containerRef);
-    const generatedId = useId();
-
+    const [isVisible, setIsVisible] = useState(false);
     const [engineReady, setEngineReady] = useState(false);
     const [ParticlesComponent, setParticlesComponent] = useState<any>(null);
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
-    // Lazy-load tsparticles only when the component becomes visible
+    // Intersection Observer for visibility
     useEffect(() => {
-        if (!isVisible || engineReady) return;
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) {
+                setIsVisible(true);
+                observer.disconnect();
+            }
+        }, observerOptions);
 
-        // CRITICAL PERF FIX: Do not load or evaluate tsparticles on mobile devices at all.
-        // It saves ~3.8s of main-thread execution time.
-        if (typeof window !== "undefined" && window.innerWidth < 768) return;
+        if (containerRef.current) {
+            observer.observe(containerRef.current);
+        }
+
+        return () => observer.disconnect();
+    }, []);
+
+    // Lazy-load tsparticles only when visible and on desktop
+    useEffect(() => {
+        if (!isVisible || isMobile || engineReady) return;
 
         let cancelled = false;
 
         (async () => {
-            const [{ default: Particles }, { initParticlesEngine }, { loadSlim }] = await Promise.all([
-                import("@tsparticles/react"),
-                import("@tsparticles/react"),
-                import("@tsparticles/slim"),
-            ]);
+            try {
+                const [{ default: Particles }, { initParticlesEngine }, { loadSlim }] = await Promise.all([
+                    import("@tsparticles/react"),
+                    import("@tsparticles/react"),
+                    import("@tsparticles/slim"),
+                ]);
 
-            if (cancelled) return;
+                if (cancelled) return;
 
-            await initParticlesEngine(async (engine) => {
-                await loadSlim(engine);
-            });
+                await initParticlesEngine(async (engine) => {
+                    await loadSlim(engine);
+                });
 
-            if (cancelled) return;
+                if (cancelled) return;
 
-            setParticlesComponent(() => Particles);
-            setEngineReady(true);
+                setParticlesComponent(() => Particles);
+                setEngineReady(true);
+            } catch (error) {
+                console.error("Failed to load particles:", error);
+            }
         })();
 
         return () => { cancelled = true; };
-    }, [isVisible, engineReady]);
+    }, [isVisible, isMobile, engineReady]);
 
-    const particlesOptions = useMemo(() => ({
+    const particlesOptions = {
         background: {
-            color: {
-                value: background,
-            },
+            color: { value: background },
         },
-        fullScreen: {
-            enable: false,
-        },
-        fpsLimit: 60,
+        fullScreen: { enable: false },
+        fpsLimit: 30,
         interactivity: {
             events: {
-                onClick: {
-                    enable: true,
-                    mode: "push",
-                },
-                onHover: {
-                    enable: false,
-                },
+                onClick: { enable: true, mode: "push" },
+                onHover: { enable: false },
                 resize: { enable: true },
             },
-            modes: {
-                push: {
-                    quantity: 4,
-                },
-            },
+            modes: { push: { quantity: 4 } },
         },
         particles: {
-            color: {
-                value: particleColor,
-            },
+            color: { value: particleColor },
             move: {
                 enable: true,
-                speed: {
-                    min: 0.1,
-                    max: speed,
-                },
+                speed: { min: 0.1, max: speed },
                 direction: "none" as const,
-                outModes: {
-                    default: "out" as const,
-                },
+                outModes: { default: "out" as const },
             },
             number: {
-                density: {
-                    enable: true,
-                    width: 400,
-                    height: 400,
-                },
+                density: { enable: true, width: 400, height: 400 },
                 value: particleDensity,
             },
             opacity: {
-                value: {
-                    min: 0.1,
-                    max: 1,
-                },
-                animation: {
-                    enable: true,
-                    speed: speed * 0.5,
-                    sync: false,
-                },
+                value: { min: 0.1, max: 1 },
+                animation: { enable: true, speed: speed * 0.5, sync: false },
             },
-            shape: {
-                type: "circle",
-            },
+            shape: { type: "circle" },
             size: {
-                value: {
-                    min: minSize,
-                    max: maxSize,
-                },
+                value: { min: minSize, max: maxSize },
             },
         },
         detectRetina: true,
-    }), [background, particleColor, speed, particleDensity, minSize, maxSize]);
+    };
 
     return (
         <div ref={containerRef} className={cn("h-full w-full", className)}>
             {isVisible && engineReady && ParticlesComponent && (
                 <ParticlesComponent
-                    id={id || generatedId}
+                    id={id}
                     className="h-full w-full"
                     options={particlesOptions}
                 />

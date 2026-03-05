@@ -1,5 +1,10 @@
-import { SparklesCore } from "@/components/ui/sparkles";
+import dynamic from "next/dynamic";
 import HeroVisual from "./HeroVisual";
+
+const SparklesCore = dynamic(() => import("@/components/ui/sparkles").then(mod => mod.SparklesCore), {
+    ssr: false,
+    loading: () => <div className="w-full h-full bg-gradient-to-br from-slate-900/20 to-transparent" />
+});
 
 interface HeroProps {
     t: {

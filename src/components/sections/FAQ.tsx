@@ -1,5 +1,10 @@
-import { SparklesCore } from "../ui/sparkles";
+import dynamic from "next/dynamic";
 import FaqAccordion from "./FaqAccordion";
+
+const SparklesCore = dynamic(() => import("../ui/sparkles").then(mod => mod.SparklesCore), {
+    ssr: false,
+    loading: () => <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 to-transparent" />
+});
 
 interface FAQProps {
     t: {
