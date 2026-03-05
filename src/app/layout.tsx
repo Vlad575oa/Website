@@ -12,6 +12,7 @@ export default function RootLayout({
     return (
         <html lang="ru" className="scroll-smooth">
             <head>
+                <link rel="icon" href="/favicon.jpg" type="image/jpeg" />
                 <link rel="preconnect" href="https://fonts.googleapis.com" />
                 <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
                 <script

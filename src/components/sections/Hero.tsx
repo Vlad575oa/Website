@@ -51,16 +51,15 @@ export default function Hero({ t }: HeroProps) {
 
                         <div className="flex flex-col gap-4 text-left">
                             <h1 className="text-white text-5xl sm:text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
-                                <span>{t.title_prefix}</span><br className="hidden sm:block" />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-[#137fec] to-blue-500">{t.title_accent_1}</span>
-                                <span className="sm:hidden"> </span>
-                                <br className="hidden sm:block" />
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-[#137fec] to-blue-500 animate-shimmer bg-[length:200%_auto]">{t.title_accent_2}</span>
+                                <span className="block mb-2">{t.title_prefix}</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-[#137fec] to-blue-500">
+                                    {t.title_accent_1} {t.title_accent_2}
+                                </span>
                             </h1>
                             <p className="text-white text-lg sm:text-xl font-medium leading-relaxed max-w-xl mt-2 tracking-wide flex flex-wrap gap-x-4 gap-y-2">
-                                <span className="animate-[purpleShimmer_4s_infinite_1.7s]">{t.desc_1}</span>
-                                <span className="animate-[blueShimmer_4s_infinite_2.1s]">{t.desc_2}</span>
-                                <span className="animate-[greenShimmer_4s_infinite_2.5s]">{t.desc_3}</span>
+                                <span className="animate-[purpleShimmer_4s_infinite_1.7s] inline-block">{t.desc_1}</span>
+                                <span className="animate-[blueShimmer_4s_infinite_2.1s] inline-block">{t.desc_2}</span>
+                                <span className="animate-[greenShimmer_4s_infinite_2.5s] inline-block">{t.desc_3}</span>
                             </p>
                         </div>
 

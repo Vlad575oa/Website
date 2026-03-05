@@ -1,13 +1,13 @@
 import { Inter, Manrope, Noto_Sans, Alumni_Sans_Pinstripe } from "next/font/google";
 
 export const inter = Inter({
-    subsets: ["latin"],
+    subsets: ["cyrillic", "latin"],
     display: "swap",
     variable: "--font-inter",
 });
 
 export const manrope = Manrope({
-    subsets: ["latin"],
+    subsets: ["cyrillic", "latin"],
     display: "swap",
     variable: "--font-manrope",
 });
@@ -20,7 +20,7 @@ export const notoSans = Noto_Sans({
 });
 
 export const alumniSans = Alumni_Sans_Pinstripe({
-    subsets: ["latin"],
+    subsets: ["cyrillic", "latin"],
     weight: ["400"],
     display: "swap",
     variable: "--font-alumni-sans",
